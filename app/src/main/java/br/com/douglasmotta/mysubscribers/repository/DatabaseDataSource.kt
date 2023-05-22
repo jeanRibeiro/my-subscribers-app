@@ -1,10 +1,9 @@
 package br.com.douglasmotta.mysubscribers.repository
 
-import androidx.lifecycle.LiveData
-import br.com.douglasmotta.mysubscribers.data.db.dao.SubscriberDAO
+import br.com.douglasmotta.mysubscribers.data.db.dao.SubscriberRoomDAO
 import br.com.douglasmotta.mysubscribers.data.db.entity.SubscriberEntity
 
-class DatabaseDataSource(private val subscriberDAO: SubscriberDAO) : SubscriberRepository {
+class DatabaseDataSource(private val subscriberRoomDAO: SubscriberRoomDAO) : SubscriberRepository {
 
     override suspend fun insertSubscriber(name: String, email: String): Long {
         val subscriber = SubscriberEntity(
@@ -12,7 +11,7 @@ class DatabaseDataSource(private val subscriberDAO: SubscriberDAO) : SubscriberR
             email = email
         )
 
-        return subscriberDAO.insert(subscriber)
+        return subscriberRoomDAO.insert(subscriber)
     }
 
     override suspend fun updateSubscriber(id: Long, name: String, email: String) {
@@ -22,18 +21,18 @@ class DatabaseDataSource(private val subscriberDAO: SubscriberDAO) : SubscriberR
             email = email
         )
 
-        subscriberDAO.update(subscriber)
+        subscriberRoomDAO.update(subscriber)
     }
 
     override suspend fun deleteSubscriber(id: Long) {
-        subscriberDAO.delete(id)
+        subscriberRoomDAO.delete(id)
     }
 
     override suspend fun deleteAllSubscribers() {
-        subscriberDAO.deleteAll()
+        subscriberRoomDAO.deleteAll()
     }
 
     override suspend fun getAllSubscribers(): List<SubscriberEntity> {
-        return subscriberDAO.getAll()
+        return subscriberRoomDAO.getAll()
     }
 }

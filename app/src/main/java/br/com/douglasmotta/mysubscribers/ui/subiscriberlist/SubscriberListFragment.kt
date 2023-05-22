@@ -23,7 +23,7 @@ class SubscriberListFragment : Fragment(R.layout.subscriber_list_fragment) {
     private val viewModel: SubscriberListViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                val subscriberDao = AppDatabase.getInstance(requireContext()).subscriberDAO
+                val subscriberDao = AppDatabase.getInstance(requireContext()).subscriberRoomDAO
                 val repository: SubscriberRepository = DatabaseDataSource(subscriberDao)
                 return SubscriberListViewModel(repository) as T
             }

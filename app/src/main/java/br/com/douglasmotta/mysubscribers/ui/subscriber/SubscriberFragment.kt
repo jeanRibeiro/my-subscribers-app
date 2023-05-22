@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import br.com.douglasmotta.mysubscribers.R
 import br.com.douglasmotta.mysubscribers.data.db.AppDatabase
-import br.com.douglasmotta.mysubscribers.data.db.dao.SubscriberDAO
+import br.com.douglasmotta.mysubscribers.data.db.dao.SubscriberRoomDAO
 import br.com.douglasmotta.mysubscribers.extension.hideKeyboard
 import br.com.douglasmotta.mysubscribers.repository.DatabaseDataSource
 import br.com.douglasmotta.mysubscribers.repository.SubscriberRepository
@@ -24,10 +24,10 @@ class SubscriberFragment : Fragment(R.layout.subscriber_fragment) {
     private val viewModel: SubscriberViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                val subscriberDAO: SubscriberDAO =
-                    AppDatabase.getInstance(requireContext()).subscriberDAO
+                val subscriberRoomDAO: SubscriberRoomDAO =
+                    AppDatabase.getInstance(requireContext()).subscriberRoomDAO
 
-                val repository: SubscriberRepository = DatabaseDataSource(subscriberDAO)
+                val repository: SubscriberRepository = DatabaseDataSource(subscriberRoomDAO)
                 return SubscriberViewModel(repository) as T
             }
         }

@@ -5,7 +5,7 @@ import androidx.room.*
 import br.com.douglasmotta.mysubscribers.data.db.entity.SubscriberEntity
 
 @Dao
-interface SubscriberDAO {
+interface SubscriberRoomDAO {
 
     @Insert
     suspend fun insert(subscriber: SubscriberEntity): Long
